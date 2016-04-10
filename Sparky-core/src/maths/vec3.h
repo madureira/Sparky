@@ -16,15 +16,15 @@ namespace sparky { namespace maths {
         vec3& multiply(const vec3& other);
         vec3& divide(const vec3& other);
 
-        friend vec3& operator+(vec3 left, const vec3& right);
-        friend vec3& operator-(vec3 left, const vec3& right);
-        friend vec3& operator*(vec3 left, const vec3& right);
-        friend vec3& operator/(vec3 left, const vec3& right);
+        friend vec3 operator+(vec3 left, const vec3& right);
+        friend vec3 operator-(vec3 left, const vec3& right);
+        friend vec3 operator*(vec3 left, const vec3& right);
+        friend vec3 operator/(vec3 left, const vec3& right);
 
-        vec3 operator+=(const vec3& other);
-        vec3 operator-=(const vec3& other);
-        vec3 operator*=(const vec3& other);
-        vec3 operator/=(const vec3& other);
+        vec3& operator+=(const vec3& other);
+        vec3& operator-=(const vec3& other);
+        vec3& operator*=(const vec3& other);
+        vec3& operator/=(const vec3& other);
 
         bool operator==(const vec3& other);
         bool operator!=(const vec3& other);
