@@ -1,0 +1,14 @@
+# Visual Studio files
+.vs
+Sparky.sdf
+Sparky.sln
+Sparky.VC.opendb
+Sparky-core.vcxproj
+Sparky-core.vcxproj.filters
+Sparky-core.vcxproj.user
+
+# Project files
+Dependencies/
+bin/
+
+
