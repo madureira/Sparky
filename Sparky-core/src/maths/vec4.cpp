@@ -2,14 +2,6 @@
 
 namespace sparky { namespace maths {
 
-    vec4::vec4()
-    {
-        this->x = 0.0f;
-        this->y = 0.0f;
-        this->z = 0.0f;
-        this->w = 0.0f;
-    }
-
     vec4::vec4(const float& x, const float& y, const float& z, const float& w)
     {
         this->x = x;
