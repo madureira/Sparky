@@ -6,7 +6,7 @@ namespace sparky { namespace graphics {
         m_VertPath(vertPath),
         m_FragPath(fragPath)
     {
-        m_ShaderID = load();
+        m_ShaderID = this->load();
     }
 
     Shader::~Shader()
