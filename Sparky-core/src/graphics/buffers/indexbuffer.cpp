@@ -7,8 +7,22 @@ namespace sparky { namespace graphics {
     {
         glGenBuffers(1, &m_BufferID);
         this->bind();
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, count * sizeof(GLshort), data, GL_STATIC_DRAW);
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, count * sizeof(GLushort), data, GL_STATIC_DRAW);
         this->unbind();
+    }
+
+    IndexBuffer::IndexBuffer(GLuint* data, GLsizei count)
+        : m_Count(count)
+    {
+        glGenBuffers(1, &m_BufferID);
+        this->bind();
+        glBufferData(GL_ELEMENT_ARRAY_BUFFER, count * sizeof(GLuint), data, GL_STATIC_DRAW);
+        this->unbind();
+    }
+
+    IndexBuffer::~IndexBuffer()
+    {
+        glDeleteBuffers(1, &m_BufferID);
     }
 
     void IndexBuffer::bind() const
