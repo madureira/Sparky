@@ -10,7 +10,8 @@ namespace sparky {
     public:
         static std::string read_file(const char* filepath)
         {
-            FILE* file = fopen(filepath, "rt");
+            FILE* file;
+            fopen_s(&file, filepath, "rt");
             fseek(file, 0, SEEK_END);
             unsigned long length = ftell(file);
             char* data = new char[length + 1];

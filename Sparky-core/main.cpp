@@ -9,6 +9,7 @@
 #include "src/graphics/renderable2d.h"
 #include "src/graphics/staticsprite.h"
 #include "src/graphics/sprite.h"
+#include "src/utils/timer.h"
 #include <time.h>
 
 #define WINDOW_WIDTH 960
@@ -63,14 +64,19 @@ int main()
     Simple2DRenderer renderer;
 #endif
 
+    Timer time;
+    float timer = 0;
+    unsigned int frames = 0;
     while (!window.closed())
     {
+        mat4 mat = mat4::translation(vec3(5, 5 , 5));
+        mat = mat * mat4::rotation(time.elapsed() * 50.0f, vec3(0, 0, 1));
+        mat = mat * mat4::translation(vec3(-5, -5, -5));
+        shader.setUniformMat4("ml_matrix", mat);
         window.clear();
         double x, y;
         window.getMousePosition(x, y);
-
         shader.setUniform2f("light_pos", vec2((float)(x * 16.0f / WINDOW_WIDTH), (float)(9.0f - y * 9.0f / WINDOW_HEIGHT)));
-
 #if BATCH_RENDERER
         renderer.begin();
 #endif
@@ -82,8 +88,14 @@ int main()
         renderer.end();
 #endif
         renderer.flush();
-
         window.update();
+        frames++;
+        if (time.elapsed() - timer > 1.0f)
+        {
+            timer += 1.0f;
+            printf("%d fps\n", frames);
+            frames = 0;
+        }
     }
 
     return 0;
